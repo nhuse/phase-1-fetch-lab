@@ -1,6 +1,12 @@
+const { default: fetch } = require("node-fetch");
+
 function fetchBooks() {
   // To pass the tests, don't forget to return your fetch!
-  
+  fetch('https://anapioficeandfire.com/api/books').then(function(response){
+    return response.json();
+  }).then(json => renderBooks(json));
+
+  return fetch('https://anapioficeandfire.com/api/books');
 }
 
 function renderBooks(books) {
@@ -15,3 +21,4 @@ function renderBooks(books) {
 document.addEventListener('DOMContentLoaded', function() {
   fetchBooks();
 });
+
